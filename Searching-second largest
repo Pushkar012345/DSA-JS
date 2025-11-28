@@ -1,0 +1,33 @@
+class Solution {
+    getSecondLargest(arr) {
+        // code here
+        let first=-1, second=-1;
+        
+        for(let x of arr)
+        {
+            if(x>first)
+            {
+                second=first;
+                first=x;
+            }
+            else if(x<first && second<x)
+            {
+                second=x;
+            }
+            
+        }
+        
+        return second;
+    }
+}
+
+/*
+If a number is bigger than largest, shift the old largest to secondLargest.
+
+If it's between secondLargest and largest, update secondLargest.
+
+Ensures second largest is strictly smaller than largest.
+
+TC:- O(n) || SC:- O(1)
+
+*/
