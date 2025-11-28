@@ -1,0 +1,63 @@
+/**
+ * @param {number[]} arr
+ * @returns {number}
+ */
+class Solution {
+    firstRepeated(arr) {
+        // code here
+        let n=arr.length;
+        let flag=false;
+        let ans= -1;
+        
+        let mp=new Map();
+        
+        for(let i=0;i<n;i++) mp.set(arr[i],0);
+        
+        for(let i=0;i<n;i++) mp.set(arr[i], mp.get(arr[i])+1);
+        
+        for(let i=0;i<n;i++) 
+        {
+            if(mp.get(arr[i])>1)
+            {
+                ans=i+1;
+                break;
+            }
+        }
+        
+        return ans;
+    }
+}
+
+/*
+#LOGIC (Short & Clear)
+
+Use a Map to count frequencies of all elements.
+
+Loop once and increase count of each element.
+
+Loop again from left to right
+
+The first element whose frequency > 1
+→ this is the first repeating element (smallest index).
+
+Return its 1-based index.
+If none found → return -1.
+
+# TIME COMPLEXITY
+O(n)
+
+Counting frequencies → O(n)
+
+Finding first repeating → O(n)
+
+# SPACE COMPLEXITY
+O(n)
+
+Map stores frequency of each unique element.
+
+# One-line summary:
+
+Count all frequencies, then return the first index whose count is >1, using a map.
+
+
+*/
