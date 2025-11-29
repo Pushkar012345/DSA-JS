@@ -1,0 +1,47 @@
+Expected Approach:
+Intuition:
+The idea is to use the binary search to find the first occurrence of zero in the array and find the number of zeros accordingly in the array as the array is sorted in decreasing order(i.e. we have 1's in the starting and 0's at the end after the 1's).
+
+Implementation:
+2-(2).png2-(2).png
+Call the firstZero function to find the find index of first zero in given array.
+This function is a modified binary search to find the index of the first occurrence of 0 in a sorted array of 0s and 1s.
+It takes three parameters: the array (arr), the lower bound of the search (low), and the upper bound of the search (high).
+Run a loop while high is greater than equal to low,
+The middle element (mid) is calculated(i.e. low + (high - low) / 2), and the function checks if it is the first occurrence of 0 by examining the elements at mid and mid - 1.
+If arr[mid] is 1, it means the 0 is in the right half, so the function recursively searches in the right half (mid + 1 to high).
+If arr[mid] is 0, it means the 0 might be in the left half, so the function recursively searches in the left half (low to mid - 1).
+The search continues until the first occurrence of 0 is found, and its index is returned.
+Return -1.
+If first is equal to -1 then return 0.
+Return (n - first) as the number of zeros in the array.
+Code:
+
+
+
+//Back-end complete function Template for javascript
+​
+class Solution {
+​
+    countZeroes(arr) {
+        let n = arr.length;
+        let start = 0;
+        let end = n - 1;
+        let lastIndexOfOne = -1;
+​
+        while (start <= end) {
+            let mid = Math.floor(start + (end - start) / 2);
+​
+            if (arr[mid] === 1) {
+                lastIndexOfOne = mid;
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+        return n - lastIndexOfOne - 1;
+    }
+}
+Complexity:
+Time Complexity: O(logn), As we are using binary search to find the first occurrence of 0 and the time complexity of binary search is O(logn).
+Space Complexity: O(logn), As we are using recursive binary search, so the size of the recursive call stack is logN.
