@@ -1,0 +1,44 @@
+// User function Template for javascript
+class Solution {
+    intersection(a, b) {
+        
+         // Step 1: Sort both arrays
+        a.sort((x, y) => x - y);
+        b.sort((x, y) => x - y);
+        
+        let i=0,j=0;
+        
+        let n=a.length,m=b.length;
+        
+        let result=[];
+        
+        let prev=null;
+        
+        while(i<n && j<m)
+        {
+            if(a[i]===b[j])
+            {
+                if(a[i]!=prev)
+                {
+                    result.push(a[i]);
+                    prev=a[i];
+                }
+                i++;
+                j++;
+            }
+            else if(a[i]<b[j])
+            {
+              i++;   
+            }
+            else
+            {
+                j++;
+            }
+        }
+        
+        return result;
+        
+        
+        
+    }
+}
