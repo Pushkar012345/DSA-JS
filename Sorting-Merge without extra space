@@ -1,0 +1,31 @@
+/**
+ * @param {number[]} a
+ * @param {number[]} b
+ * @returns {void}
+ */
+class Solution {
+    mergeArrays(a, b) {
+        // code here
+        let i= a.length-1;
+        let j=0;
+        
+        //swap smaller ele from b[] with larger ele from a[]
+        
+        while(i>=0 && j<b.length)
+        {
+            if(a[i]<b[j])
+            {
+                i--;
+            }
+            else
+            {
+                [a[i],b[j]]=[b[j],a[i]];
+                i--;
+                j++;
+            }
+        }
+        
+        a.sort((x,y)=>x-y);
+        b.sort((x,y)=>x-y);
+    }
+}
