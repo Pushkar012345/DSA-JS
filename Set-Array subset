@@ -1,0 +1,46 @@
+// User function Template for javascript
+
+/**
+ * @param {number[]} a
+ * @param {number[]} b
+ * @returns {boolean}
+ */
+
+class Solution {
+    isSubset(a, b) {
+        // Your code here
+        let n = a.length;
+        let m = b.length;
+        let um = new Map();
+        let um2 = new Map();
+
+        for (let i = 0; i < n; i++) {
+            if (um.has(a[i])) {
+                um.set(a[i], um.get(a[i]) + 1);
+            } else {
+                um.set(a[i], 1);
+            }
+        }
+
+        for (let i = 0; i < m; i++) {
+            if (um2.has(b[i])) {
+                um2.set(b[i], um2.get(b[i]) + 1);
+            } else {
+                um2.set(b[i], 1);
+            }
+        }
+
+        let count = 0;
+        for (let [key, value] of um2) {
+            if (um.has(key) && um.get(key) >= value) {
+                count += value;
+            }
+        }
+
+        if (count == m) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
