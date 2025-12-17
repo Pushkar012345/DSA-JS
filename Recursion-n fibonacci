@@ -1,0 +1,28 @@
+
+/**
+ * @param {BigInt} N
+ * @returns {BigInt[]}
+ */
+class Solution {
+    // Function to return list containing first n fibonacci numbers.
+    fibonacciNumbers(N) {
+        // code here
+        let ans=new Array();
+        
+        let a=BigInt(0), b=BigInt(1);
+        
+        if(N>0) ans.push(BigInt(0));
+        if(N>1) ans.push(BigInt(1));
+        
+        for(let i=2;i<N;i++)
+        {
+            ans.push(a+b);
+            let c=a+b;
+            
+            a=b;
+            b=c;
+        }
+        
+        return ans;
+    }
+}
