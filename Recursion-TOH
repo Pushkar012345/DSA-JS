@@ -1,0 +1,15 @@
+ towerOfHanoi(n, from, to, aux) {
+        // code here
+        let moves=0;
+        
+        if(n>=1)
+        {
+            moves+=this.towerOfHanoi(n-1,from, aux,to);
+            
+            moves++;
+            
+            moves+=this.towerOfHanoi(n-1,aux, to,from);
+        }
+        
+        return moves;
+    }
